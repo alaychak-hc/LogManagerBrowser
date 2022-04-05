@@ -9,7 +9,7 @@
     Email: ALaychak@harriscomputer.com
 
     Created At: 04-05-2022 10:25:52 PM
-    Last Modified: 04-05-2022 10:38:26 PM
+    Last Modified: 04-05-2022 11:28:26 PM
     Last Updated By: Andrew Laychak
 
     Description: Global logger that handles logging data for various sources in the web browser
@@ -22,10 +22,7 @@
 // #endregion
 
 // #region Imports
-import { format as dformat } from 'date-fns';
-import { boolean } from 'boolean';
 import util from 'util';
-import { logLevels } from '../enums/Log Level';
 // #endregion
 
 // #region Logger
@@ -115,7 +112,9 @@ class LogManagerBrowser {
 }
 // #endregion
 
+// #region Global Variables
 const logManagerBrowser = new LogManagerBrowser();
+// #endregion
 
 // #region Exports
 export default logManagerBrowser;
