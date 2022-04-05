@@ -1,0 +1,132 @@
+{
+  "name": "@alaychak-hc/log-manager-browser",
+  "author": "Andrew Laychak",
+  "description": "Log Manager Browser",
+  "version": "1.0.0",
+  "license": "MIT",
+  "homepage": "https://github.com/alaychak-hc/LogManager#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alaychak-hc/LogManager.git"
+  },
+  "bugs": {
+    "url": "https://github.com/HarrisCareTracker/LogManagerBrowser/issues"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "prepublish": "pnpm build",
+    "build": "pnpm clean && ttsc",
+    "build:pack": "pnpm build && pnpm pack",
+    "clean": "rimraf ./dist",
+    "preinstall": "npx only-allow pnpm",
+    "lint:staged": "lint-staged --debug --verbose",
+    "lint": "eslint src --ext .ts --ignore-pattern __tests__/ --fix",
+    "lint:html": "eslint src --ext .ts --ignore-pattern __tests__/ --output-file out/lint.html --format html",
+    "pm2:log": "pm2 logs 'LogManagerBrowser'",
+    "pm2:start": "cross-var pm2 start process.json --env $npm_config_fhir-env",
+    "pm2:stop": "cross-var pm2 stop process.json --env $npm_config_fhir-env",
+    "start": "ts-node --transpile-only src/start.ts",
+    "start:dev": "tsnd --respawn -r tsconfig-paths/register --clear --transpile-only src/start.ts",
+    "test": "jest",
+    "watch": "ttsc --watch"
+  },
+  "files": [
+    "dist"
+  ],
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
+  "browserslist": [
+    "IE > 8",
+    "Chrome > 80",
+    "Firefox > 75",
+    "Safari > 12",
+    "Edge > 80"
+  ],
+  "lint-staged": {
+    "**/*.ts": [
+      "ttsc --noEmit",
+      "eslint --ignore-pattern __tests__/ --ignore-pattern migrations/ --fix"
+    ],
+    "**/*.{json,md,html,js,jsx,ts,tsx}": [
+      "prettier --write --ignore-unknown"
+    ]
+  },
+  "pkg": {
+    "scripts": [
+      "dist/**/*.js"
+    ],
+    "outputPath": "dist/executable",
+    "targets": [
+      "latest-win-x64"
+    ]
+  },
+  "prettier": {
+    "semi": true,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "es5"
+  },
+  "_moduleAliases": {
+    "@classes/*": [
+      "src/classes/*"
+    ],
+    "@docs/*": [
+      "src/docs/*"
+    ],
+    "@helpers/*": [
+      "src/helpers/*"
+    ],
+    "@src/*": [
+      "src/*"
+    ],
+    "@root/*": [
+      "./*"
+    ]
+  },
+  "dependencies": {
+    "boolean": "^3.1.4",
+    "date-fns": "^2.27.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.5",
+    "@babel/eslint-parser": "^7.16.5",
+    "@babel/preset-env": "^7.16.5",
+    "@jest/types": "^27.4.2",
+    "@semantic-release/git": "^10.0.1",
+    "@types/jest": "^27.0.3",
+    "@types/node": "^16.11.13",
+    "@types/rimraf": "^3.0.2",
+    "@typescript-eslint/eslint-plugin": "^5.7.0",
+    "@typescript-eslint/parser": "^5.7.0",
+    "babel-jest": "^27.4.5",
+    "copyfiles": "^2.4.1",
+    "cross-var": "^1.1.0",
+    "eslint": "^8.4.1",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-typescript": "^2.5.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-node": "^11.1.0",
+    "jest": "^27.4.5",
+    "localtunnel": "^2.0.2",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.5.1",
+    "regenerator-runtime": "^0.13.9",
+    "rimraf": "^3.0.2",
+    "semantic-release": "^18.0.1",
+    "ts-jest": "^27.1.1",
+    "ts-node": "^10.4.0",
+    "ts-node-dev": "^1.1.8",
+    "tsconfig-paths": "^3.12.0",
+    "ttypescript": "^1.5.13",
+    "typescript": "^4.5.4",
+    "typescript-transform-paths": "^3.3.1"
+  }
+}
