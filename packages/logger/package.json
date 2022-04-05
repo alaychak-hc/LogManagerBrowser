@@ -4,10 +4,10 @@
   "description": "Log Manager Browser",
   "version": "1.0.0",
   "license": "MIT",
-  "homepage": "https://github.com/alaychak-hc/LogManager#readme",
+  "homepage": "https://github.com/alaychak-hc/LogManagerBrowser#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/alaychak-hc/LogManager.git"
+    "url": "https://github.com/alaychak-hc/LogManagerBrowser.git"
   },
   "bugs": {
     "url": "https://github.com/HarrisCareTracker/LogManagerBrowser/issues"
