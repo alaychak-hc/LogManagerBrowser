@@ -15,14 +15,16 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "type": "module",
+  "exports": "./lib/types.js",
+  "main": "./lib/types.js",
+  "types": "./lib/types.d.ts",
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "prepublish": "pnpm build",
     "build": "pnpm clean && ttsc",
-    "build:pack": "pnpm build && pnpm pack",
-    "clean": "rimraf ./dist",
-    "preinstall": "npx only-allow pnpm",
+    "build:pack": "pnpm build && pnpm pack && pnpm clean",
+    "clean": "rimraf ./lib",
     "lint:staged": "lint-staged --debug --verbose",
     "lint": "eslint src --ext .ts --ignore-pattern __tests__/ --fix",
     "lint:html": "eslint src --ext .ts --ignore-pattern __tests__/ --output-file out/lint.html --format html",
@@ -34,9 +36,6 @@
     "test": "jest",
     "watch": "ttsc --watch"
   },
-  "files": [
-    "dist"
-  ],
   "babel": {
     "presets": [
       "@babel/preset-env"
