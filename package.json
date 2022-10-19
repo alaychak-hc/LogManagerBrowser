@@ -1,6 +1,6 @@
 {
-  "name": "caretracker",
-  "description": "The workspace for the CareTracker FHIR API",
+  "name": "alaychak-hc",
+  "description": "The workspace for the Log Manager Browser",
   "private": true,
   "scripts": {
     "build:logger": "pnpm build --filter @alaychak-hc/log-manager-browser",
